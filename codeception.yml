@@ -13,3 +13,15 @@ modules:
     config:
         Yii2:
             configFile: '/config/test.php'
+
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - src/*
+        exclude:
+            - src/services/calculators/*
+            - config/*
+            - migration/*
+            - tests/*
+            - vendor/*
