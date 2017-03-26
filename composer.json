@@ -1,0 +1,41 @@
+{
+  "name": "uranum/yii2-delivery-calculator",
+  "description": "yiitest for Yii2 Framework.",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "delivery",
+    "calculator"
+  ],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Eugeny Emelyanov",
+      "email": "emel.yanov@mail.ru",
+      "homepage": "https://github.com/uranum"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/uranum/yii2-delivery-calculator/issues?state=open",
+    "source": "https://github.com/uranum/yii2-delivery-calculator"
+  },
+  "require": {
+    "php": "~7.0.0",
+    "yiisoft/yii2": "~2.0.11"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.2.3",
+    "codeception/verify": "~0.3.1",
+    "codeception/specify": "~0.4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "uranum\\delivery\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "uranum\\delivery\\tests\\": ""
+    }
+  }
+}
