@@ -16,7 +16,7 @@
  *
  * @SuppressWarnings(PHPMD)
 */
-class UnitTester extends \Codeception\Actor
+class UranumUnitTester extends \Codeception\Actor
 {
     use _generated\UnitTesterActions;
 

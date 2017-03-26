@@ -35,7 +35,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "uranum\\delivery\\tests\\": ""
+      "uranum\\delivery\\tests\\": "tests"
     }
   }
 }

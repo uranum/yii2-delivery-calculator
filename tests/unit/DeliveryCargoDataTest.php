@@ -4,13 +4,13 @@
  * User:    Евегний Емельянов <e9139905539@gmail.com>
  */
 
-namespace tests\unit;
+namespace uranum\delivery\tests\unit;
 
 
+use Codeception\Test\Unit;
 use uranum\delivery\DeliveryCargoData;
-use PHPUnit\Framework\TestCase;
 
-class DeliveryCargoDataTest extends TestCase
+class DeliveryCargoDataTest extends Unit
 {
 	public function testGettersWorks()
 	{

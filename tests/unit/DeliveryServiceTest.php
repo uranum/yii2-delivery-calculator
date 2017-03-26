@@ -8,18 +8,30 @@ namespace uranum\delivery\tests\unit;
 
 
 use Codeception\Test\Unit;
+use UranumUnitTester;
 use uranum\delivery\DeliveryCargoData;
 use uranum\delivery\services\CourierDelivery;
 use uranum\delivery\services\PickupDelivery;
+use uranum\delivery\tests\fixtures\DeliveryFixture;
 
 
 class DeliveryServiceTest extends Unit
 {
 	private $data;
+	/**
+	 * @var UranumUnitTester
+	 */
+	protected $tester;
 	
-	public function setUp()
+	public function _before()
 	{
 		$this->data = new DeliveryCargoData(659300, 'Бийск', 2000, 1000, 275);
+		$this->tester->haveFixtures([
+			'delivery' => [
+				'class'    => DeliveryFixture::className(),
+				'dataFile' => codecept_data_dir() . 'delivery.php',
+			],
+		]);
 	}
 	
 	public function testCreateService()

@@ -2,10 +2,9 @@
 #
 # Suite for unit (internal) tests.
 
-class_name: UnitTester
+class_name: UranumUnitTester
 modules:
     enabled:
         - Yii2:
-            part: [orm, email, fixtures]
+            part: [orm, fixtures]
         - Asserts
-        - \Helper\Unit
