@@ -18,7 +18,23 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-	
+		
+        $this->registerTranslations();
 	    \Yii::configure($this, require(__DIR__ . '/config.php'));
     }
+	
+	public function registerTranslations()
+	{
+		\Yii::$app->i18n->translations['module'] = [
+			'class'          => 'yii\i18n\PhpMessageSource',
+			'sourceLanguage' => 'en-US',
+			'basePath'       => '@vendor/uranum/yii2-delivery-calculator/src/module/messages',
+        ];
+    }
+	
+	public static function t($category, $message, $params = [], $language = null)
+	{
+		return \Yii::t($category, $message, $params, $language);
+	}
+	
 }

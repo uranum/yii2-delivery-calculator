@@ -1,5 +1,6 @@
 <?php
 
+use uranum\delivery\module\Module;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -27,7 +28,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'serviceShownFor')->radioList($model->serviceShownForRadioList(), ['separator' => '<br>']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Module::t('module', 'Create') : Module::t('module', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

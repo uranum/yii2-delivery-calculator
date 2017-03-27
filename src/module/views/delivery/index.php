@@ -1,6 +1,7 @@
 <?php
 
-use common\components\delivery\module\models\DeliveryServices;
+use uranum\delivery\module\models\DeliveryServices;
+use uranum\delivery\module\Module;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -8,16 +9,15 @@ use yii\grid\GridView;
 /* @var $searchModel uranum\delivery\module\models\DeliverySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title                   = 'Delivery Services';
+$this->title                   = Module::t('module', 'Delivery Services');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="delivery-services-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-		<?= Html::a('Create Delivery Services', ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(Module::t('module', 'Create Delivery Services'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
