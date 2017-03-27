@@ -1,6 +1,6 @@
 {
   "name": "uranum/yii2-delivery-calculator",
-  "description": "yiitest for Yii2 Framework.",
+  "description": "Yii2 extension help to get the result of the calculating from the aggregated delivery services",
   "type": "yii2-extension",
   "keywords": [
     "yii2",
