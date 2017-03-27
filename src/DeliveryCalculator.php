@@ -1,15 +1,13 @@
 <?php
 /**
  * Created by PhpStorm.
- * User:    Евегний Емельянов <e9139905539@gmail.com>
+ * User:    Евгений Емельянов <e9139905539@gmail.com>
  */
 
 namespace uranum\delivery;
 
 
 use uranum\delivery\services\DeliveryInterface;
-use Yii;
-use yii\base\Module;
 
 class DeliveryCalculator
 {
@@ -41,6 +39,7 @@ class DeliveryCalculator
 	/**
 	 * Примерный результат работы метода - для передачи этих данных
 	 * в представление (виджет):
+	 * ```php
 	 *    $result = [
 	 *        'service 1' => [
 	 *            'name' => 'Post',
@@ -55,6 +54,7 @@ class DeliveryCalculator
 	 *            'info' => false,
 	 *        ]
 	 *    ];
+	 * ```
 	 * @return array $result
 	 */
 	public function calculate()

@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User:    Евегний Емельянов <emel.yanov@mail.ru>
+ * User:    Евгений Емельянов <emel.yanov@mail.ru>
  */
 
 namespace uranum\delivery;
