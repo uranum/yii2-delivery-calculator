@@ -2,6 +2,7 @@
 
 namespace uranum\delivery\module\models;
 
+use uranum\delivery\module\Module;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -28,11 +29,11 @@ class DeliveryServices extends ActiveRecord
 	const SHOWN_LOCALLY        = 2;
 	const SHOWN_EXCEPT_LOCALLY = 3;
 	
-	const SHOWN_FOR_ALL_TEXT            = 'показывать везде';
-	const SHOWN_FOR_LOCALLY_TEXT        = 'только для своего города';
-	const SHOWN_FOR_EXCEPT_LOCALLY_TEXT = 'показывать везде, кроме своего города';
-	const YES                           = 'Да';
-	const NOT                           = 'Нет';
+	const SHOWN_FOR_ALL_TEXT            = 'show everywhere';
+	const SHOWN_FOR_LOCALLY_TEXT        = 'show only for the city of departure';
+	const SHOWN_FOR_EXCEPT_LOCALLY_TEXT = 'show everywhere except the city of departure';
+	const YES                           = 'Yes';
+	const NOT                           = 'No';
 	
 	/**
 	 * @inheritdoc
@@ -68,22 +69,24 @@ class DeliveryServices extends ActiveRecord
 	{
 		return [
 			'id'              => 'ID',
-			'name'            => 'Название',
-			'code'            => 'Кодовое обозначение',
-			'isActive'        => 'Активно',
-			'fixedCost'       => 'Фиксированая стоимость',
-			'info'            => 'Пояснения',
-			'terms'           => 'Сроки доставки',
-			'serviceShownFor' => 'Для какого пункта назначения показывать эту доставку',
+			'name'            => Module::t('module', 'Name'),
+			'code'            => Module::t('module', 'Code'),
+			'isActive'        => Module::t('module', 'Is active'),
+			'fixedCost'       => Module::t('module', 'Fixed cost'),
+			'info'            => Module::t('module', 'Notes'),
+			'terms'           => Module::t('module', 'Term of delivery'),
+			'serviceShownFor' => Module::t('module', 'For what destination city this service is shown'),
+			'created_at'      => Module::t('module', 'Created at'),
+			'updated_at'      => Module::t('module', 'Updated at'),
 		];
 	}
 	
 	public function serviceShownForRadioList()
 	{
 		return [
-			self::SHOWN_FOR_ALL        => self::SHOWN_FOR_ALL_TEXT,
-			self::SHOWN_LOCALLY        => self::SHOWN_FOR_LOCALLY_TEXT,
-			self::SHOWN_EXCEPT_LOCALLY => self::SHOWN_FOR_EXCEPT_LOCALLY_TEXT,
+			self::SHOWN_FOR_ALL        => Module::t('module', self::SHOWN_FOR_ALL_TEXT),
+			self::SHOWN_LOCALLY        => Module::t('module', self::SHOWN_FOR_LOCALLY_TEXT),
+			self::SHOWN_EXCEPT_LOCALLY => Module::t('module', self::SHOWN_FOR_EXCEPT_LOCALLY_TEXT),
 		];
 	}
 	
@@ -94,6 +97,6 @@ class DeliveryServices extends ActiveRecord
 	
 	public function getIsActiveText()
 	{
-		return $this->isActive ? self::YES : self::NOT;
+		return $this->isActive ? Module::t('module', self::YES) : Module::t('module', self::NOT);
 	}
 }
