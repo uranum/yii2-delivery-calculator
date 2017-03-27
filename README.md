@@ -43,7 +43,7 @@ to the require section of your `composer.json` file.
 			    'respFormat'   => 'json',               // Формат ответа (html, php, arr, wddx, json, plain) (НЕобязательный)
 			    'country'      => 'Ru',                 // Страна (список стран: http://postcalc.ru/countries.php) (НЕобязательный)
 			    'servers'      => [
-				    //'api.postcalc.ru',                // После тестовых запросов включить "боевой" сервер (ОБЯЗАТЕЛЬН)
+				    //'api.postcalc.ru',                // После тестовых запросов включить "боевой" сервер (ОБЯЗАТЕЛЬНО)
 				    'test.postcalc.ru',
 			    ],                                      // Список серверов для беплатной версии (ОБЯЗАТЕЛЬНЫЙ)
 			    'httpOptions'  => [
