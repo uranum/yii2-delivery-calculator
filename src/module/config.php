@@ -13,9 +13,9 @@ return [
 		'post_naloj' => [
 			'class' => 'uranum\delivery\services\PostNalojDelivery',
 		],
-		/*'cdek' => [
+		'cdek' => [
 			'class' => 'uranum\delivery\services\CdekDelivery'
-		],*/
+		],
 		'courier'    => [
 			'class' => 'uranum\delivery\services\CourierDelivery',
 		],
@@ -55,8 +55,8 @@ return [
 		'width'              => 20,                   // Щирина места отправления
 		'height'             => 25,                   // Высота места отправления
 		'length'             => 35,                   // Длина места отправления
-		'authLogin'          => '',                   // Логин в системе СДЭК
-		'authPassword'       => '',                   // Пароль в системе СДЭК
+		'authLogin'          => 'bd980ed82fb15fe5b08800eaf9991a49',                   // Логин в системе СДЭК
+		'authPassword'       => 'af4c14b0b10a6119c2215c2bcebb041e',                   // Пароль в системе СДЭК
 		'modeId'             => '',                   // Выбранный режим доставки. Выбирается из предоставляемого СДЭК списка
 		/** Конец - Параметры для cdek */
 	],

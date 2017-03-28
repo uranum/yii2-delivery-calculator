@@ -7,6 +7,8 @@
 namespace uranum\delivery\services\calculators;
 
 
+use yii\base\InvalidParamException;
+
 class CdekCalc
 {
 	/**
@@ -72,6 +74,10 @@ class CdekCalc
 	 * @var PlaceParams вес и объем отправляемого места
 	 */
 	private $place;
+	/**
+	 * @var array
+	 */
+	private $data = [];
 	
 	private $servers
 		= [
@@ -79,8 +85,6 @@ class CdekCalc
 			'http://api.edostavka.ru/calculator/calculate_price_by_json.php',
 			'http://lk.cdek.ru:8080/calculator/calculate_price_by_json.php',
 		];
-	private $result;
-	private $error;
 	
 	/**
 	 * CdekCalc constructor.
@@ -100,10 +104,13 @@ class CdekCalc
 		$this->dateExecute          = (new \DateTime())->add(new \DateInterval('P1D'))->format('Y-m-d');
 		$this->senderCityId         = $params['senderCityId'];
 		$this->senderCityPostCode   = $params['senderCityPostCode'];
+		$this->authLogin            = $params['authLogin'];
+		$this->authPassword         = $params['authPassword'];
 		$this->receiverCityId       = $receiverCityId;
 		$this->receiverCityPostCode = $receiverCityPostCode;
 		$this->tariffId             = $tariffId;
 		$this->place                = $place;
+		$this->fillPlaceParams();
 	}
 	
 	private function setSecure()
@@ -116,4 +123,101 @@ class CdekCalc
 		$this->goods['weight'] = $this->place->getWeightInKg();
 		$this->goods['volume'] = $this->place->getVolumeInMetres();
 	}
+	
+	private function collectData()
+	{
+		$this->data['version']              = $this->version;
+		$this->data['dateExecute']          = $this->dateExecute;
+		$this->data['authLogin']            = $this->authLogin;
+		$this->data['authPassword']         = $this->authPassword;
+		$this->data['secure']               = $this->setSecure();
+		$this->data['senderCityId']         = $this->senderCityId ? : '';
+		$this->data['senderCityPostCode']   = $this->senderCityPostCode ? : '';
+		$this->setReceiverCity();
+		$this->data['tariffId']             = $this->tariffId;
+		$this->data['goods'][]              = $this->goods;
+	}
+	
+	private function setReceiverCity()
+	{
+		if ( ! isset($this->receiverCityId) && ! empty($this->receiverCityPostCode)) {
+			$this->data['receiverCityPostCode'] = $this->receiverCityPostCode;
+		} elseif (isset($this->receiverCityId) && isset($this->receiverCityPostCode)) {
+			$this->data['receiverCityId'] = $this->receiverCityId;
+		} else {
+			throw new InvalidParamException("Не задан город-получатель!");
+		}
+	}
+	
+	private function isCURLAvailable()
+	{
+		if (extension_loaded('curl')) {
+			return true;
+		}
+		throw new \RuntimeException("Расчет невозможен: не подключена библиотека CURL.");
+	}
+	
+	private function requestToCdek()
+	{
+		//var_dump($result);
+		//die();
+		$result = 'Неизвестная ошибка.';
+		try {
+			$this->collectData();
+			foreach ($this->servers as $server) {
+				if ($result = $this->curlExecute($server)) {
+					break;
+				}
+			}
+		} catch (\Exception $e) {
+			$result = $e->getMessage();
+		}
+		
+		return $result;
+	}
+	
+	private function curlExecute($server)
+	{
+		$this->isCURLAvailable();
+		$ch = curl_init($server);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->data));
+		
+		$result = json_decode(curl_exec($ch), true);
+		curl_close($ch);
+		if ($result !== false) {
+			return $result;
+		} else {
+			throw new \HttpResponseException("Сервер вернул ошибку!");
+		}
+	}
+	
+	public function calculate()
+	{
+		
+		return $this->requestToCdek();
+	}
 }
+
+/**
+ * {
+ * "version":"1.0",
+ * "dateExecute":"2012-07-29",
+ * "authLogin":"bd980ed82fb15fe5b08800eaf9991a49",
+ * "authPassword":"af4c14b0b10a6119c2215c2bcebb041e",
+ * "senderCityId":"270",
+ * "receiverCityId":"2367",
+ * "tariffId":"136",
+ * "goods":
+ * [
+ * {
+ * "weight":"0.9",
+ * "length":"10",
+ * "width":"7",
+ * "height":"5"
+ * }
+ * ]
+ * }
+ */

@@ -73,7 +73,7 @@ class DeliveryController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
