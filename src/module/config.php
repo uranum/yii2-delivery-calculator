@@ -14,10 +14,10 @@ return [
 			'class' => 'uranum\delivery\services\PostNalojDelivery',
 		],
 		'cdek-store' => [
-			'class' => 'uranum\delivery\services\CdekStore'
+			'class' => 'uranum\delivery\services\CdekStore',
 		],
-		'cdek-door' => [
-			'class' => 'uranum\delivery\services\CdekDoor'
+		'cdek-door'  => [
+			'class' => 'uranum\delivery\services\CdekDoor',
 		],
 		'courier'    => [
 			'class' => 'uranum\delivery\services\CourierDelivery',
@@ -25,9 +25,15 @@ return [
 		'pickup'     => [
 			'class' => 'uranum\delivery\services\PickupDelivery',
 		],
+		'energy'     => [
+			'class' => 'uranum\delivery\services\EnergyDelivery',
+		],
 	],
 	'params'     => [
 		'locationFrom'       => 'Новосибирск',        // Город отправки (название или индекс)
+		'width'              => 20,                   // Щирина места отправления (см)
+		'height'             => 25,                   // Высота места отправления (см)
+		'length'             => 35,                   // Длина места отправления (см)
 		/** Параметры для postcalc */
 		'siteName'           => 'inknsk.ru',          // Название сайта (ОБЯЗАТЕЛЬНЫЙ)
 		'email'              => 'emel.yanov@mail.ru', // Контактный email. Самый принципиальный параметр для postcalc (ОБЯЗАТЕЛЬНЫЙ)
@@ -55,13 +61,15 @@ return [
 		/** Параметры для cdek */
 		'senderCityId'       => 270,                  // Код Новосибирска в системе СДЭК
 		'senderCityPostCode' => 630000,               // Индекс Новосибирска
-		'width'              => 20,                   // Щирина места отправления
-		'height'             => 25,                   // Высота места отправления
-		'length'             => 35,                   // Длина места отправления
 		/** Параметры ТЕСТОВОЙ учетной записи */
 		'authLogin'          => 'e56022425b2e58b476b051418604ddb2',                   // Логин в системе СДЭК
 		'authPassword'       => 'c8e4fb656a630a97f374b50a097cf75c',                   // Пароль в системе СДЭК
 		'modeId'             => '',                   // Выбранный режим доставки. Выбирается из предоставляемого СДЭК списка
 		/** Конец - Параметры для cdek */
+		/** Параметры для Энергия */
+		'idCityFrom'         => 383,                  // Новосибирск
+		'cover'              => 0,
+		'idCurrency'         => 0,
+		/** Конец - Параметры для Энергия */
 	],
 ];

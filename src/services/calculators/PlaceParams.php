@@ -57,4 +57,17 @@ class PlaceParams
 	{
 		return floatval(($this->width * $this->height * $this->length) / 1000000);
 	}
+	
+	/**
+	 * @return array
+	 */
+	public function toArray()
+	{
+		return [
+			'weight' => $this->getWeightInKg(),
+			'width'  => $this->width / 100,
+			'height' => $this->height / 100,
+			'length' => $this->length / 100,
+		];
+	}
 }
