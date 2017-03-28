@@ -118,6 +118,8 @@ class PostCalc
 				if ($content === false) {
 					$content = 'Не удалось соединиться ни с одним из серверов postcalc.ru';
 					continue;
+				} else {
+					break;
 				}
 			}
 		} catch (Exception $exception) {

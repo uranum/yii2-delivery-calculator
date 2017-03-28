@@ -110,7 +110,6 @@ class CdekCalc
 		$this->receiverCityPostCode = $receiverCityPostCode;
 		$this->tariffId             = $tariffId;
 		$this->place                = $place;
-		$this->fillPlaceParams();
 	}
 	
 	private function setSecure()
@@ -126,16 +125,17 @@ class CdekCalc
 	
 	private function collectData()
 	{
-		$this->data['version']              = $this->version;
-		$this->data['dateExecute']          = $this->dateExecute;
-		$this->data['authLogin']            = $this->authLogin;
-		$this->data['authPassword']         = $this->authPassword;
-		$this->data['secure']               = $this->setSecure();
-		$this->data['senderCityId']         = $this->senderCityId ? : '';
-		$this->data['senderCityPostCode']   = $this->senderCityPostCode ? : '';
+		$this->fillPlaceParams();
 		$this->setReceiverCity();
-		$this->data['tariffId']             = $this->tariffId;
-		$this->data['goods'][]              = $this->goods;
+		$this->data['version']            = $this->version;
+		$this->data['dateExecute']        = $this->dateExecute;
+		$this->data['authLogin']          = $this->authLogin;
+		$this->data['authPassword']       = $this->authPassword;
+		$this->data['secure']             = $this->setSecure();
+		$this->data['senderCityId']       = $this->senderCityId ? : '';
+		$this->data['senderCityPostCode'] = $this->senderCityPostCode ? : '';
+		$this->data['tariffId']           = $this->tariffId;
+		$this->data['goods'][]            = $this->goods;
 	}
 	
 	private function setReceiverCity()
@@ -157,26 +157,26 @@ class CdekCalc
 		throw new \RuntimeException("Расчет невозможен: не подключена библиотека CURL.");
 	}
 	
-	private function requestToCdek()
+	private function requestToCdek(): array
 	{
-		//var_dump($result);
-		//die();
-		$result = 'Неизвестная ошибка.';
+		$result = [];
 		try {
 			$this->collectData();
+			
 			foreach ($this->servers as $server) {
-				if ($result = $this->curlExecute($server)) {
+				$result = $this->curlExecute($server);
+				if ( ! array_key_exists('error', $result)) {
 					break;
 				}
 			}
 		} catch (\Exception $e) {
-			$result = $e->getMessage();
+			$result['error'][] = ['text' => $e->getMessage()];
 		}
 		
 		return $result;
 	}
 	
-	private function curlExecute($server)
+	private function curlExecute($server): array
 	{
 		$this->isCURLAvailable();
 		$ch = curl_init($server);
@@ -184,40 +184,18 @@ class CdekCalc
 		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->data));
-		
-		$result = json_decode(curl_exec($ch), true);
-		curl_close($ch);
-		if ($result !== false) {
-			return $result;
+		if (($response = curl_exec($ch)) === false) {
+			$result['error'][] = ['text' => "Ошибка сервера: " . curl_error($ch)];
 		} else {
-			throw new \HttpResponseException("Сервер вернул ошибку!");
+			$result = json_decode($response, true);
 		}
+		curl_close($ch);
+		
+		return $result;
 	}
 	
-	public function calculate()
+	public function calculate(): array
 	{
-		
 		return $this->requestToCdek();
 	}
 }
-
-/**
- * {
- * "version":"1.0",
- * "dateExecute":"2012-07-29",
- * "authLogin":"bd980ed82fb15fe5b08800eaf9991a49",
- * "authPassword":"af4c14b0b10a6119c2215c2bcebb041e",
- * "senderCityId":"270",
- * "receiverCityId":"2367",
- * "tariffId":"136",
- * "goods":
- * [
- * {
- * "weight":"0.9",
- * "length":"10",
- * "width":"7",
- * "height":"5"
- * }
- * ]
- * }
- */
