@@ -13,8 +13,11 @@ return [
 		'post_naloj' => [
 			'class' => 'uranum\delivery\services\PostNalojDelivery',
 		],
-		'cdek' => [
-			'class' => 'uranum\delivery\services\CdekDelivery'
+		'cdek-store' => [
+			'class' => 'uranum\delivery\services\CdekStore'
+		],
+		'cdek-door' => [
+			'class' => 'uranum\delivery\services\CdekDoor'
 		],
 		'courier'    => [
 			'class' => 'uranum\delivery\services\CourierDelivery',

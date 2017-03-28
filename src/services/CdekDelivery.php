@@ -10,7 +10,7 @@ namespace uranum\delivery\services;
 use uranum\delivery\services\calculators\CdekCalc;
 use uranum\delivery\services\calculators\PlaceParams;
 
-class CdekDelivery extends YiiModuleDelivery
+abstract class CdekDelivery extends YiiModuleDelivery implements CdekDeliveryInterface
 {
 	const TARIF_STORE_STORE = 136;
 	const TARIF_STORE_DOOR  = 137;
@@ -26,7 +26,7 @@ class CdekDelivery extends YiiModuleDelivery
 		$calculator = new CdekCalc(
 			$this->innerCode,
 			$this->zip,
-			self::TARIF_STORE_STORE,
+			$this->chooseTarif(),
 			$place,
 			$this->moduleParams
 		);
