@@ -6,6 +6,8 @@ return [
 	'Delivery Services'                               => 'Службы доставки',
 	'Create'                                          => 'Создать',
 	'Update'                                          => 'Обновить',
+	'Choose'                                          => 'Выбрать',
+	'Select'                                          => 'Выбрать',
 	'Yes'                                             => 'Да',
 	'No'                                              => 'Нет',
 	'show everywhere'                                 => 'показывать везде',

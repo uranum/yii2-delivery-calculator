@@ -62,9 +62,9 @@ class DeliveryCalculator
 		$this->loadServices();
 		$result = [];
 		/** @var DeliveryInterface $service */
-		foreach ($this->services as $service) {
+		foreach ($this->services as $code => $service) {
 			$service->calculate();
-			$result[] = $service->getResult();
+			$result[$code] = $service->getResult();
 		}
 		
 		return $result;
@@ -80,7 +80,7 @@ class DeliveryCalculator
 		$services = $this->servicesCollection;
 		foreach ($services as $componentName => $service) {
 			$class            = $service['class'];
-			$this->services[] = new $class($this->cargoParams, $componentName);
+			$this->services[$componentName] = new $class($this->cargoParams, $componentName);
 		}
 	}
 }
