@@ -9,7 +9,6 @@ namespace uranum\delivery\services;
 
 use uranum\delivery\services\calculators\EnergyCalc;
 use uranum\delivery\services\calculators\PlaceParams;
-use yii\helpers\VarDumper;
 
 class EnergyDelivery extends YiiModuleDelivery
 {
@@ -39,8 +38,6 @@ class EnergyDelivery extends YiiModuleDelivery
 		$calculator = new EnergyCalc($this->zip, $this->moduleParams, $place->toArray());
 		$result     = $calculator->calculate();
 		$this->handleResult($result);
-		//VarDumper::dump($result, 10, true);
-		//die();
 	}
 	
 	private function handleResult($result)
