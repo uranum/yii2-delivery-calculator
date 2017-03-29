@@ -9,6 +9,7 @@ namespace uranum\delivery\services;
 
 use uranum\delivery\DeliveryCargoDataInterface;
 use uranum\delivery\module\models\DeliveryServices;
+use yii\helpers\VarDumper;
 
 abstract class YiiModuleDelivery implements DeliveryInterface
 {
@@ -32,9 +33,9 @@ abstract class YiiModuleDelivery implements DeliveryInterface
 	 * PickupDelivery constructor.
 	 *
 	 * @param DeliveryCargoDataInterface $cargoParams
-	 * @param                            $serviceCode
+	 * @param                            $componentName
 	 */
-	public function __construct(DeliveryCargoDataInterface $cargoParams, $serviceCode)
+	public function __construct(DeliveryCargoDataInterface $cargoParams, $componentName)
 	{
 		$this->moduleParams = \Yii::$app->getModule('delivery')->params;
 		$this->cartCost     = $cargoParams->getCartCost();
@@ -44,7 +45,7 @@ abstract class YiiModuleDelivery implements DeliveryInterface
 		$this->locationTo   = $cargoParams->getCity();
 		$this->locationFrom = $this->moduleParams['locationFrom'];
 		/** @var DeliveryServices $serviceParams */
-		$this->serviceParams = DeliveryServices::findOne(['code' => $serviceCode]);
+		$this->serviceParams = DeliveryServices::findOne(['code' => $componentName]);
 		$this->isActive      = $this->serviceParams->isActive;
 		$this->isShown       = $this->serviceParams->serviceShownFor;
 	}

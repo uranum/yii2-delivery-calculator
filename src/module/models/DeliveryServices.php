@@ -59,6 +59,7 @@ class DeliveryServices extends ActiveRecord
 			[['name', 'code', 'serviceShownFor'], 'required'],
 			[['isActive', 'fixedCost', 'serviceShownFor', 'created_at', 'updated_at'], 'integer'],
 			[['name', 'code', 'terms', 'info'], 'string', 'max' => 100],
+			[['name', 'code', 'terms', 'info', 'isActive', 'fixedCost', 'serviceShownFor', 'created_at', 'updated_at'], 'safe'],
 		];
 	}
 	

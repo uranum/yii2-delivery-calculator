@@ -30,7 +30,7 @@ class ServiceAdminTest extends Unit
 	
 	public function testUpdateServiceWithCorrectData()
 	{
-		$delivery = DeliveryServices::findOne(['code' => 'cdek']);
+		$delivery = DeliveryServices::findOne(['code' => 'cdek-store']);
 		$delivery->load([
 			'DeliveryServices' =>
 				[
@@ -45,7 +45,7 @@ class ServiceAdminTest extends Unit
 		]);
 		expect($delivery->save())->true();
 		
-		$delivery2 = DeliveryServices::findOne(['code' => 'cdek']);
+		$delivery2 = DeliveryServices::findOne(['code' => 'cdek-store']);
 		expect($delivery2)->null();
 		
 		$delivery3 = DeliveryServices::findOne(['code' => 'energy']);
@@ -54,7 +54,7 @@ class ServiceAdminTest extends Unit
 	
 	public function testUpdateServiceWithWrongData()
 	{
-		$delivery = DeliveryServices::findOne(['code' => 'cdek']);
+		$delivery = DeliveryServices::findOne(['code' => 'cdek-store']);
 		$delivery->load([
 			'DeliveryServices' =>
 				[

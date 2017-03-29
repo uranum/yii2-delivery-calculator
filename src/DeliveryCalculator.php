@@ -30,7 +30,7 @@ class DeliveryCalculator
 	 * @param DeliveryCargoData $cargoParams
 	 * @param  array            $services
 	 */
-	public function __construct($cargoParams, $services)
+	public function __construct($cargoParams, array $services)
 	{
 		$this->cargoParams        = $cargoParams;
 		$this->servicesCollection = $services;
@@ -77,9 +77,8 @@ class DeliveryCalculator
 	 */
 	private function loadServices()
 	{
-		$services = $this->servicesCollection;
-		foreach ($services as $componentName => $service) {
-			$class            = $service['class'];
+		foreach ($this->servicesCollection as $componentName => $service) {
+			$class = $service['class'];
 			$this->services[$componentName] = new $class($this->cargoParams, $componentName);
 		}
 	}

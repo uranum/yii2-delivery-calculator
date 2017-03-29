@@ -16,6 +16,15 @@ return [
 		],
 	],
 	'components'    => [
-		'db' => require dirname(__DIR__) . '/config/db-local.php',
+		'db'   => require dirname(__DIR__) . '/config/db-local.php',
+		'i18n' => [
+			'translations' => [
+				'module' => [
+					'class'          => 'yii\i18n\PhpMessageSource',
+					'sourceLanguage' => 'en-US',
+					'basePath'       => dirname(__DIR__) . '/src/module/messages',
+				],
+			],
+		],
 	],
 ];

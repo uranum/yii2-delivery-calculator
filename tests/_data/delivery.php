@@ -46,7 +46,7 @@ return [
 	],
 	[
 		'name'            => 'СДЭК',
-		'code'            => 'cdek',
+		'code'            => 'cdek-store',
 		'isActive'        => 0,
 		'fixedCost'       => null,
 		'info'            => null,
