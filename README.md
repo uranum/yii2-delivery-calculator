@@ -24,7 +24,7 @@ to the require section of your `composer.json` file.
 #### Configure module
 
 ##### Миграции
-Примените миграцию yii migrate `yii migrate --migrationPath=@uranum/migration`
+Примените миграцию  `yii migrate --migrationPath=@uranum/delivery/migration`
 
 
 ОБЯЗАТЕЛЬНО!
