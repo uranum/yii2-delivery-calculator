@@ -30,7 +30,8 @@
   },
   "autoload": {
     "psr-4": {
-      "uranum\\delivery\\": "src"
+      "uranum\\delivery\\": "src",
+      "uranum\\delivery\\migration\\": "migration"
     }
   },
   "autoload-dev": {

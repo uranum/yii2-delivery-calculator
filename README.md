@@ -22,6 +22,11 @@ or add
 to the require section of your `composer.json` file.
 
 #### Configure module
+
+##### Миграции
+Примените миграцию yii migrate `yii migrate --migrationPath=@uranum/migration`
+
+
 ОБЯЗАТЕЛЬНО!
 Задать параметры для [postcalc](http://postcalc.ru/api.html)
 ```php
