@@ -4,7 +4,7 @@ use yii\db\Migration;
 
 class m170323_074600_TableDeliveries extends Migration
 {
-	private $tableName = '{{%deliveryServices}}';
+	private $tableName = '{{%delivery_services}}';
 	
 	private $indexPrefix = 'idx-profile-';
 	

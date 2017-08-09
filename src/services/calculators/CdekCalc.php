@@ -83,7 +83,7 @@ class CdekCalc
 		= [
 			'https://api.cdek.ru/calculator/calculate_price_by_json.php',
 			'http://api.edostavka.ru/calculator/calculate_price_by_json.php',
-			'http://lk.cdek.ru:8080/calculator/calculate_price_by_json.php',
+//			'http://lk.cdek.ru:8080/calculator/calculate_price_by_json.php',
 		];
 	
 	/**

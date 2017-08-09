@@ -41,8 +41,9 @@ abstract class CdekDelivery extends YiiModuleDelivery implements CdekDeliveryInt
 	private function handleResult($result)
 	{
 		$this->info = $this->serviceParams->info . ' ';
+		$this->id = $this->serviceParams->id;
 		$this->name = $this->serviceParams->name;
-		
+
 		if (array_key_exists('result', $result)) {
 			$this->resultCost = $result['result']['price'];
 			$this->setTerms($result['result']);

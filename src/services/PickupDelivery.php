@@ -13,6 +13,7 @@ class PickupDelivery extends YiiModuleDelivery
 	
 	public function calculate()
 	{
+		$this->id       = $this->serviceParams->id;
 		$this->name       = $this->serviceParams->name;
 		$this->info       = $this->serviceParams->info ? : '';
 		$this->resultCost = $this->serviceParams->fixedCost ? : 0;

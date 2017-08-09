@@ -42,12 +42,14 @@ class DeliveryCalculator
 	 * ```php
 	 *    $result = [
 	 *        'service 1' => [
+	 *            'id' => 1,
 	 *            'name' => 'Post',
 	 *            'terms' => '12-15',
 	 *            'cost' => '340.55',
 	 *            'info' => 'only landing',
 	 *        ],
 	 *        'service 2' => [
+	 *            'is' => 2,
 	 *            'name' => 'Cdek',
 	 *            'terms' => '3-5',
 	 *            'cost' => '240.00',

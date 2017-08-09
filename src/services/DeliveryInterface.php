@@ -16,9 +16,10 @@ interface DeliveryInterface
 	 * на основе данных об отправлении ($cargoParams) и параметрах
 	 * службы доставки ($serviceParams)
 	 * Здесь нужно присвоить значения для полей:
+	 *  $this->id
 	 *  $this->name
 	 *  $this->terms
-	 *  $this->resultCost
+	 *  $this->cost
 	 *  $this->info
 	 * @return mixed
 	 */

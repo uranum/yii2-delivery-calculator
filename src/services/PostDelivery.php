@@ -22,6 +22,7 @@ class PostDelivery extends YiiModuleDelivery
 		);
 		$result = $calculator->getResult();
 		
+		$this->id = $this->serviceParams->id;
 		$this->name = $this->serviceParams->name;
 		$this->handleResult($result);
 	}

@@ -8,7 +8,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%deliveryServices}}".
+ * This is the model class for table "{{%delivery_services}}".
  * @property integer $id
  * @property string  $name
  * @property string  $code
@@ -25,6 +25,9 @@ use yii\db\ActiveRecord;
  */
 class DeliveryServices extends ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_NOT_ACTIVE = 0;
+
 	const SHOWN_FOR_ALL        = 1;
 	const SHOWN_LOCALLY        = 2;
 	const SHOWN_EXCEPT_LOCALLY = 3;
@@ -40,7 +43,7 @@ class DeliveryServices extends ActiveRecord
 	 */
 	public static function tableName()
 	{
-		return '{{%deliveryServices}}';
+		return '{{%delivery_services}}';
 	}
 	
 	public function behaviors()
@@ -100,4 +103,10 @@ class DeliveryServices extends ActiveRecord
 	{
 		return $this->isActive ? Module::t('module', self::YES) : Module::t('module', self::NOT);
 	}
+
+    public static function getDeliveryName($id)
+    {
+        $delivery = self::findOne($id);
+        return $delivery->name;
+    }
 }

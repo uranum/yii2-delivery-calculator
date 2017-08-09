@@ -23,7 +23,7 @@ to the require section of your `composer.json` file.
 
 #### Configure module
 
-##### Миграции
+##### Миграции (для создания модуля доставок в админке)
 Примените миграцию  `yii migrate --migrationPath=@uranum/delivery/migration`
 
 

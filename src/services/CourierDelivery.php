@@ -23,6 +23,7 @@ class CourierDelivery extends YiiModuleDelivery
 	 */
 	public function calculate()
 	{
+		$this->id       = $this->serviceParams->id;
 		$this->name       = $this->serviceParams->name;
 		$this->terms      = $this->serviceParams->terms ? : '';
 		$this->resultCost = $this->serviceParams->fixedCost ? : 0;

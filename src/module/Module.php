@@ -11,6 +11,7 @@ class Module extends \yii\base\Module
      * @inheritdoc
      */
     public $controllerNamespace = 'uranum\delivery\module\controllers';
+    public $params;
 
     /**
      * @inheritdoc
@@ -18,9 +19,11 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-		
+
         $this->registerTranslations();
-	    \Yii::configure($this, require(__DIR__ . '/config.php'));
+        $config = require(__DIR__ . '/config.php');
+        $config['params'] = array_merge($config['params'], $this->params);
+	    \Yii::configure($this, $config);
     }
 	
 	public function registerTranslations()
