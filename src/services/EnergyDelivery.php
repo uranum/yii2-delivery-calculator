@@ -24,6 +24,10 @@ class EnergyDelivery extends YiiModuleDelivery
         $this->handleResult($result);
     }
 
+    /**
+     * По техзаданию для ТК Энергия нужно убрать из результата авиа, а из оставшихся авто и ЖД оставить тот вариант, который дороже
+     * @param $result
+     */
     private function handleResult($result)
     {
         $this->info = $this->serviceParams->info . ' ';
@@ -36,8 +40,6 @@ class EnergyDelivery extends YiiModuleDelivery
             $transfer = $this->excludeMinPriceType($resultWithoutAvia, $maxPrice);
             $this->terms = $transfer['interval'];
             $this->resultCost = $transfer['price'];
-        } else {
-            return FALSE;
         }
     }
 
