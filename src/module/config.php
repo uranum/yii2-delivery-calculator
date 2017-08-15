@@ -30,6 +30,9 @@ return [
         $code['ENERGY']     => [
             'class' => 'uranum\delivery\services\EnergyDelivery',
         ],
+        $code['ON_CHOICE']     => [
+            'class' => 'uranum\delivery\services\OnChoiceDelivery',
+        ],
     ],
     'params'     => [
         'locationFrom'       => uranum\delivery\module\Module::CITY_SENDER,        // Город отправки (название или индекс)

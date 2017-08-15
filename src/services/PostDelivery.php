@@ -39,6 +39,6 @@ class PostDelivery extends YiiModuleDelivery
 	
 	protected function getLocationTo()
 	{
-		return isset($this->zip) ? $this->zip : $this->locationTo;
+		return $this->zip ?? $this->locationTo;
 	}
 }

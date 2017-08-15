@@ -16,9 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-		<?= Html::a(Module::t('module', 'Create Delivery Services'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <p>Новая доставка создается программистом, по инструкции, описанной в модуле</p>
+
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,

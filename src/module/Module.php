@@ -22,6 +22,7 @@ class Module extends \yii\base\Module
         'CDEK_STORE' => 'cdek_store',
         'CDEK_DOOR'  => 'cdek_door',
         'ENERGY'     => 'energy',
+        'ON_CHOICE'  => 'on_choice',
     ];
 
     /**
