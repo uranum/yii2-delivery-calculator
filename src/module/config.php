@@ -1,36 +1,37 @@
 <?php
 
+
 return [
 	'components' => [
 		/**
 		 * Названия компонентов - сервисов доставки должны совпадать со
 		 * значением поля `code` модели DeliveryServices
 		 */
-		
-		'post'       => [
+
+        uranum\delivery\module\Module::DELIVERY_CODE['POST']       => [
 			'class' => 'uranum\delivery\services\PostDelivery',
 		],
-		'post_naloj' => [
+        uranum\delivery\module\Module::DELIVERY_CODE['NALOJ'] => [
 			'class' => 'uranum\delivery\services\PostNalojDelivery',
 		],
-		'cdek-store' => [
+        uranum\delivery\module\Module::DELIVERY_CODE['CDEK_STORE'] => [
 			'class' => 'uranum\delivery\services\CdekStore',
 		],
-		'cdek-door'  => [
+        uranum\delivery\module\Module::DELIVERY_CODE['CDEK_DOOR']  => [
 			'class' => 'uranum\delivery\services\CdekDoor',
 		],
-		'courier'    => [
+        uranum\delivery\module\Module::DELIVERY_CODE['COURIER']    => [
 			'class' => 'uranum\delivery\services\CourierDelivery',
 		],
-		'pickup'     => [
+        uranum\delivery\module\Module::DELIVERY_CODE['PICKUP']     => [
 			'class' => 'uranum\delivery\services\PickupDelivery',
 		],
-		'energy'     => [
+        uranum\delivery\module\Module::DELIVERY_CODE['ENERGY']     => [
 			'class' => 'uranum\delivery\services\EnergyDelivery',
 		],
 	],
 	'params'     => [
-		'locationFrom'       => 'Новосибирск',        // Город отправки (название или индекс)
+		'locationFrom'       => uranum\delivery\module\Module::CITY_SENDER,        // Город отправки (название или индекс)
 		'width'              => 20,                   // Щирина места отправления (см)
 		'height'             => 25,                   // Высота места отправления (см)
 		'length'             => 35,                   // Длина места отправления (см)
@@ -67,7 +68,7 @@ return [
 		'modeId'             => '',                   // Выбранный режим доставки. Выбирается из предоставляемого СДЭК списка
 		/** Конец - Параметры для cdek */
 		/** Параметры для Энергия */
-		'idCityFrom'         => 383,                  // Новосибирск
+		'idCityFrom'         => 383,                  // Код Новосибирска в системе Энергия
 		'cover'              => 0,
 		'idCurrency'         => 0,
 		/** Конец - Параметры для Энергия */

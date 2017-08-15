@@ -12,6 +12,17 @@ class Module extends \yii\base\Module
      */
     public $controllerNamespace = 'uranum\delivery\module\controllers';
     public $params;
+    
+    const CITY_SENDER = 'Новосибирск';
+    const DELIVERY_CODE = [
+        'NALOJ'      => 'post_naloj',
+        'PICKUP'     => 'pickup',
+        'COURIER'    => 'courier',
+        'POST'       => 'post',
+        'CDEK_STORE' => 'cdek_store',
+        'CDEK_DOOR'  => 'cdek_door',
+        'ENERGY'     => 'energy',
+    ];
 
     /**
      * @inheritdoc

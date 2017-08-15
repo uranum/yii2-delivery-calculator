@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use uranum\delivery\module\Module;
 
 class m170804_095504_InitialDeliveryServices extends Migration
 {
@@ -27,7 +28,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
         ], [
             [
                 'Курьер',
-                'courier',
+                Module::DELIVERY_CODE['COURIER'],
                 1,
                 200,
                 NULL,
@@ -39,7 +40,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
             ],
             [
                 'Почта России',
-                'post',
+                Module::DELIVERY_CODE['POST'],
                 1,
                 NULL,
                 NULL,
@@ -51,7 +52,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
             ],
             [
                 'Почта России наложенным',
-                'post_naloj',
+                Module::DELIVERY_CODE['NALOJ'],
                 1,
                 NULL,
                 NULL,
@@ -63,7 +64,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
             ],
             [
                 'Самовывоз',
-                'pickup',
+                Module::DELIVERY_CODE['PICKUP'],
                 1,
                 0,
                 'Самостоятельно забираете в офисе.',
@@ -75,7 +76,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
             ],
             [
                 'СДЭК-склад',
-                'cdek-store',
+                Module::DELIVERY_CODE['CDEK_STORE'],
                 1,
                 NULL,
                 'Тариф "Доставка до склада" - Вам нужно будет забирать посылку в отделении СДЭК',
@@ -87,7 +88,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
             ],
             [
                 'СДЭК-дверь',
-                'cdek-door',
+                Module::DELIVERY_CODE['CDEK_DOOR'],
                 1,
                 NULL,
                 'Тариф "Доставка до двери" - Вам принесут посылку до указанного адреса',
@@ -99,7 +100,7 @@ class m170804_095504_InitialDeliveryServices extends Migration
             ],
             [
                 'Энергия',
-                'energy',
+                Module::DELIVERY_CODE['ENERGY'],
                 1,
                 NULL,
                 '',
