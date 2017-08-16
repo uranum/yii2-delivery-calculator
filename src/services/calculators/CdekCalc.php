@@ -8,6 +8,7 @@ namespace uranum\delivery\services\calculators;
 
 
 use yii\base\InvalidParamException;
+use yii\web\HttpException;
 
 class CdekCalc
 {
@@ -185,7 +186,7 @@ class CdekCalc
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->data));
 		if (($response = curl_exec($ch)) === false) {
-			$result['error'][] = ['text' => "Ошибка сервера: " . curl_error($ch)];
+		    throw new HttpException("Ошибка сервера: " . curl_error($ch));
 		} else {
 			$result = json_decode($response, true);
 		}
