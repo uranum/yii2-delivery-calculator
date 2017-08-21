@@ -107,6 +107,6 @@ class DeliveryServices extends ActiveRecord
     public static function getDeliveryName($id)
     {
         $delivery = self::findOne($id);
-        return $delivery->name;
+        return ($delivery !== null) ? $delivery->name : 'Неизвестно';
     }
 }
