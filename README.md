@@ -110,3 +110,20 @@ Result is
         ],
     ],
 ```
+### Создание своего контроллера
+Если нужно установить свои права доступа к контроллеру доставок сделайте следующее:
+* создайте в админке свой контроллер, отнаследовавшись от \uranum\delivery\module\controllers\DeliveryController
+* в этом контроллере создайте свои фильтры и поведения (access, verbs)
+* создайте свои виды (index, create, update) или 
+* рендерьте виды из расширения добавив метод init() с таким кодом:
+```php
+public function init()
+{
+    $this->module->setViewPath('@uranum/delivery/module/views');
+    \Yii::$app->i18n->translations['module'] = [
+        'class'          => 'yii\i18n\PhpMessageSource',
+        'sourceLanguage' => 'en-US',
+        'basePath'       => '@vendor/uranum/yii2-delivery-calculator/src/module/messages'
+    ];
+}
+```
