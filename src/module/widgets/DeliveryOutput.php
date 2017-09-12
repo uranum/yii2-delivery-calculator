@@ -56,7 +56,11 @@ class DeliveryOutput extends Widget
 		parent::init();
 		$this->setCost();
 		$this->buttonName = Module::t('module', 'Choose');
-		echo $this->renderContainer();
+	}
+
+    public function run()
+    {
+        $this->renderContainer();
 	}
 	
 	protected function renderContainer(): string

@@ -50,7 +50,10 @@ class DeliveryInfoCourier extends Widget
     {
         parent::init();
         /** DeliveryAsset нужно подключать в виде, где отображается этот виджет */
+    }
 
+    public function run()
+    {
         echo Html::beginTag('div', ['class' => 'col-sm-6']);
         echo Html::beginTag('div', ['class' => 'panel panel-info deliv-block', 'onclick' => 'selectDelivery(this);', 'data' => ['delivery' => $this->delivery_id, 'delivery-currentCost' => $this->delivery_cost]]);
         echo Html::tag('div', $this->name, ['class' => 'text-success panel-heading']);

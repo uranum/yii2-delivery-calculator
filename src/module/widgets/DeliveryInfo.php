@@ -23,16 +23,19 @@ class DeliveryInfo extends Widget
     public $city;
     public $info;
 
-    public function init()
+    public function run()
     {
-        parent::init();
+        $this->renderBlock();
+    }
 
+    protected function renderBlock()
+    {
         echo Html::beginTag('div', ['class' => 'col-sm-6 col-md-3']);
         echo Html::beginTag('div', [
             'class'   => 'panel panel-info deliv-block',
             'onclick' => 'selectDelivery(this);',
             'data'    => [
-                'delivery' => $this->delivery_id,
+                'delivery'             => $this->delivery_id,
                 'delivery-currentCost' => $this->delivery_cost
             ],
         ]);
