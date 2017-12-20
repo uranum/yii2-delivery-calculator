@@ -20,6 +20,7 @@ class PostDelivery extends YiiModuleDelivery
 			$this->cartCost,
 			$this->moduleParams
 		);
+        \Yii::warning($this->getLocationTo());
 		$result = $calculator->getResult();
 		
 		$this->id = $this->serviceParams->id;
@@ -39,6 +40,17 @@ class PostDelivery extends YiiModuleDelivery
 	
 	protected function getLocationTo()
 	{
-		return $this->zip ?? $this->locationTo;
+		return (empty($this->zip) || $this->isStubZip()) ? $this->locationTo : $this->zip;
 	}
+
+    /**
+     * @return bool
+     *
+     * индексы, которых нет в базе часто передаются как 000001
+     * их тоже отсекаем, чтобы искать по городу
+     */
+    protected function isStubZip(): bool
+    {
+        return strpos($this->zip, '0') === 0;
+    }
 }

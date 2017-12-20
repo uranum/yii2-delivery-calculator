@@ -7,32 +7,35 @@ return [
         /**
          * Названия компонентов - сервисов доставки должны совпадать со
          * значением поля `code` модели DeliveryServices
-         */
+         *
+         * например
 
         $code['POST']       => [
-            'class' => 'uranum\delivery\services\PostDelivery',
+        'class' => 'uranum\delivery\services\PostDelivery',
         ],
         $code['NALOJ']      => [
-            'class' => 'uranum\delivery\services\PostNalojDelivery',
+        'class' => 'uranum\delivery\services\PostNalojDelivery',
         ],
         $code['CDEK_STORE'] => [
-            'class' => 'uranum\delivery\services\CdekStore',
+        'class' => 'uranum\delivery\services\CdekStore',
         ],
         $code['CDEK_DOOR']  => [
-            'class' => 'uranum\delivery\services\CdekDoor',
+        'class' => 'uranum\delivery\services\CdekDoor',
         ],
         $code['COURIER']    => [
-            'class' => 'uranum\delivery\services\CourierDelivery',
+        'class' => 'uranum\delivery\services\CourierDelivery',
         ],
         $code['PICKUP']     => [
-            'class' => 'uranum\delivery\services\PickupDelivery',
+        'class' => 'uranum\delivery\services\PickupDelivery',
         ],
         $code['ENERGY']     => [
-            'class' => 'uranum\delivery\services\EnergyDelivery',
+        'class' => 'uranum\delivery\services\EnergyDelivery',
         ],
         $code['ON_CHOICE']     => [
-            'class' => 'uranum\delivery\services\OnChoiceDelivery',
+        'class' => 'uranum\delivery\services\OnChoiceDelivery',
         ],
+         *
+         */
     ],
     'params'     => [
         'locationFrom'       => uranum\delivery\module\Module::CITY_SENDER,        // Город отправки (название или индекс)
@@ -52,9 +55,9 @@ return [
         'respFormat'         => 'json',               // Формат ответа (html, php, arr, wddx, json, plain) (НЕобязательный)
         'country'            => 'Ru',                 // Страна (список стран: http://postcalc.ru/countries.php) (НЕобязательный)
         'servers'            => [
-            //'api.postcalc.ru',
-            'test.postcalc.ru',
-        ],                                            // Список серверов для беплатной версии (ОБЯЗАТЕЛЬНЫЙ)
+            //'api' => 'api.postcalc.ru',
+            'test' => 'test.postcalc.ru',
+        ],                                            // Список серверов для беcплатной версии (ОБЯЗАТЕЛЬНЫЙ)
         'httpOptions'        => [
             'http' => [
                 'header'     => 'Accept-Encoding: gzip',

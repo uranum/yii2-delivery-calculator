@@ -28,6 +28,42 @@ to the require section of your `composer.json` file.
 
 
 ОБЯЗАТЕЛЬНО!
+Задать сервисы доставки
+```php
+'modules'             => [
+		'delivery' => [
+			'class' => 'uranum\delivery\module\Module',
+			'params' => [...],
+            'components'             => [
+                $code['POST']       => [
+                    'class' => 'uranum\delivery\services\PostDelivery',
+                ],
+                $code['NALOJ']      => [
+                    'class' => 'uranum\delivery\services\PostNalojDelivery',
+                ],
+                $code['CDEK_STORE'] => [
+                    'class' => 'uranum\delivery\services\CdekStore',
+                ],
+                $code['CDEK_DOOR']  => [
+                    'class' => 'uranum\delivery\services\CdekDoor',
+                ],
+                $code['COURIER']    => [
+                    'class' => 'uranum\delivery\services\CourierDelivery',
+                ],
+                $code['PICKUP']     => [
+                    'class' => 'uranum\delivery\services\PickupDelivery',
+                ],
+                $code['ENERGY']     => [
+                    'class' => 'uranum\delivery\services\EnergyDelivery',
+                ],
+                $code['ON_CHOICE']     => [
+                    'class' => 'uranum\delivery\services\OnChoiceDelivery',
+                ],
+            ],
+        ],
+]
+```
+
 Задать параметры для [postcalc](http://postcalc.ru/api.html)
 ```php
 'modules'             => [
@@ -50,7 +86,7 @@ to the require section of your `composer.json` file.
 			    'servers'      => [
 				    //'api.postcalc.ru',                // После тестовых запросов включить "боевой" сервер (ОБЯЗАТЕЛЬНО)
 				    'test.postcalc.ru',
-			    ],                                      // Список серверов для беплатной версии (ОБЯЗАТЕЛЬНЫЙ)
+			    ],                                      // Список серверов для беcплатной версии (ОБЯЗАТЕЛЬНЫЙ)
 			    'httpOptions'  => [
 				    'http' => [
 					    'header'     => 'Accept-Encoding: gzip',
