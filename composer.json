@@ -7,7 +7,7 @@
     "delivery",
     "calculator"
   ],
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "authors": [
     {
       "name": "Eugeny Emelyanov",
