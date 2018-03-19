@@ -1,7 +1,7 @@
 {
   "name": "uranum/yii2-delivery-calculator",
   "description": "Yii2 extension help to get the result of the calculating from the aggregated delivery services",
-  "type": "yii2-extension",
+  "type": "library",
   "keywords": [
     "yii2",
     "delivery",

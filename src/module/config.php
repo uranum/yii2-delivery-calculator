@@ -10,30 +10,30 @@ return [
          *
          * например
 
-        $code['POST']       => [
-        'class' => 'uranum\delivery\services\PostDelivery',
-        ],
-        $code['NALOJ']      => [
-        'class' => 'uranum\delivery\services\PostNalojDelivery',
-        ],
-        $code['CDEK_STORE'] => [
-        'class' => 'uranum\delivery\services\CdekStore',
-        ],
-        $code['CDEK_DOOR']  => [
-        'class' => 'uranum\delivery\services\CdekDoor',
-        ],
-        $code['COURIER']    => [
-        'class' => 'uranum\delivery\services\CourierDelivery',
-        ],
-        $code['PICKUP']     => [
-        'class' => 'uranum\delivery\services\PickupDelivery',
-        ],
-        $code['ENERGY']     => [
-        'class' => 'uranum\delivery\services\EnergyDelivery',
-        ],
-        $code['ON_CHOICE']     => [
-        'class' => 'uranum\delivery\services\OnChoiceDelivery',
-        ],
+            $code['POST']       => [
+            'class' => 'uranum\delivery\services\PostDelivery',
+            ],
+            $code['NALOJ']      => [
+            'class' => 'uranum\delivery\services\PostNalojDelivery',
+            ],
+            $code['CDEK_STORE'] => [
+            'class' => 'uranum\delivery\services\CdekStore',
+            ],
+            $code['CDEK_DOOR']  => [
+            'class' => 'uranum\delivery\services\CdekDoor',
+            ],
+            $code['COURIER']    => [
+            'class' => 'uranum\delivery\services\CourierDelivery',
+            ],
+            $code['PICKUP']     => [
+            'class' => 'uranum\delivery\services\PickupDelivery',
+            ],
+            $code['ENERGY']     => [
+            'class' => 'uranum\delivery\services\EnergyDelivery',
+            ],
+            $code['ON_CHOICE']     => [
+            'class' => 'uranum\delivery\services\OnChoiceDelivery',
+            ],
          *
          */
     ],
