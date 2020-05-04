@@ -30,6 +30,7 @@ class PostCalc
 	public    $country;     // Страна (список стран: http://postcalc.ru/countries.php)
 	public    $respFormat;  // Формат ответа (html, php, arr, wddx, json, plain)
 	public    $httpOptions; // Опции запроса
+	public    $key; // ключ для доступа к API
 	
 	/**
 	 * PostCalc constructor.
@@ -62,6 +63,7 @@ class PostCalc
 		$this->country     = $params['country'];
 		$this->respFormat  = $params['respFormat'];
 		$this->httpOptions = $params['httpOptions'];
+		$this->key         = $params['key'];
 	}
 	
 	/**
@@ -91,6 +93,7 @@ class PostCalc
 			'c'  => $this->country,
 			'o'  => $this->respFormat,
 			'd'  => $this->sendDate,
+			'key'  => $this->key,
 			'sw' => 'PostcalcLight_1.04(custom)',
 		]);
 	}
